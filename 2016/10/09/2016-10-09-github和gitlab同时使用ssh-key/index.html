@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2016-10-09 github和gitlab同时使用ssh-key | AloesLu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ssh管理多个ssh key, 并且在多个平台使用（github、gitlab）
+1.设置或全局设置(–global)使用git的账户名称和邮箱12git config --global user.name &quot;AloesLu&quot;git config --global user.email &quot;AloesLu@gmail.com&quot;
+2.生成ssh-keygen12345gitlab:ssh-keygen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2016-10-09 github和gitlab同时使用ssh-key">
+<meta property="og:url" content="https://github.com/AloesLu/2016/10/09/2016-10-09-github和gitlab同时使用ssh-key/index.html">
+<meta property="og:site_name" content="AloesLu">
+<meta property="og:description" content="ssh管理多个ssh key, 并且在多个平台使用（github、gitlab）
+1.设置或全局设置(–global)使用git的账户名称和邮箱12git config --global user.name &quot;AloesLu&quot;git config --global user.email &quot;AloesLu@gmail.com&quot;
+2.生成ssh-keygen12345gitlab:ssh-keygen">
+<meta property="og:updated_time" content="2016-10-09T03:23:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2016-10-09 github和gitlab同时使用ssh-key">
+<meta name="twitter:description" content="ssh管理多个ssh key, 并且在多个平台使用（github、gitlab）
+1.设置或全局设置(–global)使用git的账户名称和邮箱12git config --global user.name &quot;AloesLu&quot;git config --global user.email &quot;AloesLu@gmail.com&quot;
+2.生成ssh-keygen12345gitlab:ssh-keygen">
+  
+    <link rel="alternate" href="/atom.xml" title="AloesLu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AloesLu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/AloesLu"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-10-09-github和gitlab同时使用ssh-key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/09/2016-10-09-github和gitlab同时使用ssh-key/" class="article-date">
+  <time datetime="2016-10-09T02:51:42.000Z" itemprop="datePublished">2016-10-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2016-10-09 github和gitlab同时使用ssh-key
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ssh管理多个ssh key, 并且在多个平台使用（github、gitlab）</p>
+<h3 id="1-设置或全局设置-–global-使用git的账户名称和邮箱"><a href="#1-设置或全局设置-–global-使用git的账户名称和邮箱" class="headerlink" title="1.设置或全局设置(–global)使用git的账户名称和邮箱"></a>1.设置或全局设置(–global)使用git的账户名称和邮箱</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"AloesLu"</span></div><div class="line">git config --global user.email <span class="string">"AloesLu@gmail.com"</span></div></pre></td></tr></table></figure>
+<h3 id="2-生成ssh-keygen"><a href="#2-生成ssh-keygen" class="headerlink" title="2.生成ssh-keygen"></a>2.生成ssh-keygen</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gitlab:</div><div class="line">ssh-keygen -t rsa -C “xxxxxx@vomoho.com<span class="string">"</span></div><div class="line">github:</div><div class="line">ssh-keygen -t rsa -C “xxxxxx@qq.com"</div><div class="line">生成第二个keygen的时候, 先输入文件保存名称, 再按三下回车. 否则前一个id_rsa会被覆盖.</div></pre></td></tr></table></figure>
+<h3 id="3-添加ssh-add"><a href="#3-添加ssh-add" class="headerlink" title="3.添加ssh-add"></a>3.添加ssh-add</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">ssh-add ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
+<p>如果ssh-add时提示”Could not open a connection to your authentication agent”<br>就先执行 ssh-agent bash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//可以通过 ssh-add <span class="_">-l</span> 来确私钥列表</div><div class="line">ssh-add <span class="_">-l</span></div><div class="line">//可以通过 ssh-add -D 来清空私钥列表</div><div class="line">ssh-add -D</div></pre></td></tr></table></figure>
+<h3 id="4-添加ssh-add"><a href="#4-添加ssh-add" class="headerlink" title="4.添加ssh-add"></a>4.添加ssh-add</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">touch config</div><div class="line">编辑config文件如下:</div><div class="line"><span class="comment"># gitlab</span></div><div class="line">Host gitlab.com</div><div class="line">    HostName gitlab.com</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    User git</div><div class="line">    IdentityFile ~/.ssh/id_rsa</div><div class="line"></div><div class="line"><span class="comment"># github</span></div><div class="line">Host github.com</div><div class="line">    HostName github.com</div><div class="line">    PreferredAuthentications publickey</div><div class="line">    User git</div><div class="line">    IdentityFile ~/.ssh/id_rsa_github</div></pre></td></tr></table></figure>
+<h3 id="5-测试权限"><a href="#5-测试权限" class="headerlink" title="5.测试权限"></a>5.测试权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div><div class="line">Hi AloesLu! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></div><div class="line">ssh -T git@gitlab.vomoho.com</div><div class="line">Welcome to GitLab, AloesLu!</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/AloesLu/2016/10/09/2016-10-09-github和gitlab同时使用ssh-key/" data-id="ciu22g2s80000gtynjuvzlatq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/08/2016-10-08-runtime小记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2016-10-08 runtime小记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/10/09/2016-10-09-github和gitlab同时使用ssh-key/">2016-10-09 github和gitlab同时使用ssh-key</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/08/2016-10-08-runtime小记/">2016-10-08 runtime小记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Aloes Lu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
