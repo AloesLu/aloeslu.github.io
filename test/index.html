@@ -6,9 +6,22 @@
         <title>判断手机是否安装BEST Express</title>
     </head>
     <body>
-    <a href="javascript:testApp('bestteddyuser://')" class="dl-btn" id="download">打开BEST Express</a> 
+    <a href="javascript:testIframe('bestteddyuser://')" class="dl-btn" id="download">iframe打开BEST Express</a> 
+    <a href="javascript:testHref('bestteddyuser://')" class="dl-btn" id="download">href打开BEST Express</a> 
     <script>
-    function testApp(url) {
+    function testHref(url) {
+      var loadDateTime = new Date();
+        setTimeout(function() {
+        var timeOutDateTime = new Date();
+        if (timeOutDateTime - loadDateTime < 1000) {
+          location.href = "https://itunes.apple.com/cn/app/best-express/id1440590301?mt=8";
+        } else {
+          window.close();
+        }
+        },25);
+      location.href = url;
+    }
+    function testIframe(url) {
           var timeout, t = 1000, hasApp = true; 
           setTimeout(function () { 
             if (!hasApp) { 
