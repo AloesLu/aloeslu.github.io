@@ -26,8 +26,10 @@
             document.getElementById("psidLabel").innerText = "psid:" + context.psid;
             document.getElementById("signed_requestLabel").innerText = "signed_request:" + context.signed_request;
             console.log("成功");
+            document.getElementById("detailLabel").innerText = "成功";
           }, function error(err) {
             console.log("失败" + err);
+            document.getElementById("detailLabel").innerText = "失败" + err;
         });
         MessengerExtensions.askPermission(
             function(permission_response) {
@@ -38,9 +40,11 @@
             if (isGranted) {
                 console.log("授权成功");
             }
+            document.getElementById("detailLabel").innerText = "授权成功";
     
         }, function(errorCode, errorMessage) {
             console.log("授权失败"+errorMessage);
+            document.getElementById("detailLabel").innerText = "授权失败"+errorMessage;
         },"user_profile"
         );
       };
