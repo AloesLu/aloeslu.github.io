@@ -18,6 +18,7 @@
     </div>
     <script>
     window.extAsyncInit = function() {
+        document.getElementById("detailLabel").innerText = "异步回调成功";
         MessengerExtensions.getContext(
           '2115222508797948',
           function success(context) {
